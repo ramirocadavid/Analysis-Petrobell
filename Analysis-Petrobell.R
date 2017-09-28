@@ -81,7 +81,7 @@ r.saludfin.sacrif <- scale(saludfin.sacrif, center = FALSE,
 chisq.test(saludfin.sacrif)
 
 
-# Financial health vs. overindebtedness
+# Financial health vs. sacrifice
 saludfin.sacrif <- table(datos$salud.fciera, datos$sacrificios.inacept)
 saludfin.sacrif <- saludfin.sacrif[orden.saludfin ,]
 # Relative frequencies (relative to No or Si)
@@ -89,3 +89,14 @@ r.saludfin.sacrif <- scale(saludfin.sacrif, center = FALSE,
                            scale = colSums(saludfin.sacrif))
 # Chi-square test (null hypothesis: variables are independent)
 chisq.test(saludfin.sacrif)
+
+
+# Financial health vs. overindebtedness
+saludfin.oi <- table(datos$salud.fciera, datos$Sobreendeudamiento2)
+orden.oi <- c("Green", "Yellow", "Red")
+saludfin.oi <- saludfin.oi[orden.saludfin , orden.oi]
+# Relative frequencies (relative to No or Si)
+r.saludfin.or <- scale(saludfin.oi, center = FALSE,
+                           scale = colSums(saludfin.oi))
+# Chi-square test (null hypothesis: variables are independent)
+chisq.test(saludfin.oi)
